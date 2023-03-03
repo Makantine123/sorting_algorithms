@@ -1,15 +1,15 @@
 # SORTING ALGORITHMS
 
-Resources
-Read or watch:
+# Resources
+**Read or watch:**
 
-Sorting algorithm
-Big O notation
-Sorting algorithms animations
-15 sorting algorithms in 6 minutes (WARNING: The following video can trigger seizure/epilepsy. It is not required for the project, as it is only a funny visualization of different sorting algorithms)
-CS50 Algorithms explanation in detail by David Malan
-All about sorting algorithms
-Learning Objectives
+* [Sorting algorithm](https://intranet.alxswe.com/rltoken/-j5MKLBlzZAC2RfJ5DTBIg)
+* [Big O notation](https://intranet.alxswe.com/rltoken/WRvrE2BaNVQFssHiUATTrw)
+* [Sorting algorithms animations](https://intranet.alxswe.com/rltoken/ol0P7NbYVb5R31iOv4Q40A)
+* [15 sorting algorithms in 6 minutes](https://intranet.alxswe.com/rltoken/_I0aEvhfJ66Xyob6dd9Utw) (**WARNING**: The following video can trigger seizure/epilepsy. It is not required for the project, as it is only a funny visualization of different sorting algorithms)
+* [CS50 Algorithms explanation in detail by David Malan](https://intranet.alxswe.com/rltoken/Ea93HeEYuNkOL7sGb6zzGg)
+* [All about sorting algorithms](https://intranet.alxswe.com/rltoken/21X_eaj5RGcLIL9mZv2sqw)
+# Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
 General
@@ -41,6 +41,7 @@ A list/array does not need to be sorted if its size is less than 2.
 More Info
 Data Structure and Functions
 For this project you are given the following print_array, and print_list functions:
+```sh
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -64,6 +65,8 @@ void print_array(const int *array, size_t size)
     }
     printf("\n");
 }
+```
+```sh
 #include <stdio.h>
 #include "sort.h"
 
@@ -87,9 +90,10 @@ void print_list(const listint_t *list)
     }
     printf("\n");
 }
-Our files print_array.c and print_list.c (containing the print_array and print_list functions) will be compiled with your functions during the correction.
-Please declare the prototype of the functions print_array and print_list in your sort.h header file
-Please use the following data structure for doubly linked list:
+```
+* Our files print_array.c and print_list.c (containing the print_array and print_list functions) will be compiled with your functions during the correction.
+* Please declare the prototype of the functions print_array and print_list in your sort.h header file
+* Please use the following data structure for doubly linked list:
 ```sh
 /**
  * struct listint_s - Doubly linked list node
@@ -107,15 +111,15 @@ typedef struct listint_s
 ```
 Please, note this format is used for Quiz and Task questions.
 
-O(1)
-O(n)
-O(n!)
-n square -> O(n^2)
-log(n) -> O(log(n))
-n * log(n) -> O(nlog(n))
-n + k -> O(n+k)
-…
+* O(1)
+* O(n)
+* O(n!)
+* n square -> O(n^2)
+* log(n) -> O(log(n))
+* n * log(n) -> O(nlog(n))
+* n + k -> O(n+k)
+* …
 Please use the “short” notation (don’t use constants). Example: O(nk) or O(wn) should be written O(n). If an answer is required within a file, all your answers files must have a newline at the end.
 
-Tests
+## Tests
 Here is a quick tip to help you test your sorting algorithms with big sets of random integers: Random.org
