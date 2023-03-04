@@ -6,37 +6,44 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-        listint_t *curt, *swap, *temp;
+        listint_t *sorted, *curr, *next, *temp;
 
-        if (!list || *list == NULL)
-                return
-        curt = *list;
-        if (curt->next == NULL)
-                return;
-        while (curt->next != NULL)
+        sorted = NULL;
+        curr = *list;
+
+        while (curr != NULL)
         {
-                swap = curt->next;
+                next = curr->next;
 
-                if (curt->n > swap->n)
+                if (sorted == NULL || sorted->n > curr->n)
                 {
-                        temp = curt;
-                        while (temp != NULL && temp->n > swap->n)
-                        {
-                                temp->next = swap->next;
-                                if (temp->next != NULL)
-                                        temp->next->prev = temp;
-                                swap->prev = temp->prev;
-                                if (swap->prev != NULL)
-                                        swap->prev->next = swap;
-                                else
-                                        *list = swap;
-                                temp->prev = swap;
-                                swap->next = temp;
-                                print_list(*list);
-                                temp = swap->prev;
-                        }
-                        continue;
+                        curr->next = sorted;
+                        sorted = curr;
                 }
-                curt = curt->next;
+                else
+                {
+                        aux = sorted;
+
+                        while (aux->next != NULL && aux->next->n <= curr->n)
+                        {
+                                aux = aux->next;
+                        }
+                        if (aux->next == NULL)
+                        {
+                                aux->next = curr;
+                                curr->prev = aux;
+                                curr->next = NULL;
+                        }
+                        else
+                        {
+                                temp = aux->next;
+                                aux->next = curr;
+                                curr->prev = aux;
+                                curr->next = temp;
+                                temp->prev = curr;
+                        }
+                }
+                curr = next;
         }
+        *list = sorted
 }
