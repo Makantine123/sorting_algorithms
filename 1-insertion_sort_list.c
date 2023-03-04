@@ -45,5 +45,5 @@ void insertion_sort_list(listint_t **list)
                 }
                 curr = next;
         }
-        *list = sorted
+        *list = sorted;
 }
