@@ -13,7 +13,6 @@ void insertion_sort_list(listint_t **list)
 		return;
 	curr = *list;
 
-     
 	/* validate if there is only one element in list */
 	if (curr->next == NULL)
 		return;
