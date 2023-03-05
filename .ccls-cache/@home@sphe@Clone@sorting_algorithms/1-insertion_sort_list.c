@@ -12,7 +12,8 @@ void insertion_sort_list(listint_t **list)
 	if (!list || *list == NULL)
 		return;
 	curr = *list;
-   
+
+     
 	/* validate if there is only one element in list */
 	if (curr->next == NULL)
 		return;
