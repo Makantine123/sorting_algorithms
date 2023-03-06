@@ -23,9 +23,10 @@ void selection_sort(int *array, size_t size)
 			{
 				temp = array[minidx];
 				array[minidx] = array[i];
+				print_array(array, size);
 				array[i] = temp;
 			}
-			print_array(array, size);
 		}
 	}
 }
+
