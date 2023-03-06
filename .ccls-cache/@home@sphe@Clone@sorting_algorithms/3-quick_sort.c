@@ -1,14 +1,11 @@
 #include "sort.h"
 
-void _swap(int *arr, int fist, int second, int size);
-void _quicksort(int *arr, int low, int high, size_t size);
-
-
 /**
  * _swap - Swaps 2 numbers
  * @first: 1st number
  * @second: 2nd number
  * @size: size
+ * @arr: array
  * Return: Nothing
  */
 void _swap(int *arr, int first, int second, int size)
@@ -29,6 +26,7 @@ void _swap(int *arr, int first, int second, int size)
  * @low: Low number
  * @high: High number
  * @size: Size
+ * @arr: array
  * Return: (i + 1)
  */
 int _partition(int *arr, int low, int high, size_t size)
@@ -55,9 +53,10 @@ int _partition(int *arr, int low, int high, size_t size)
  * @low: low 
  * @high: high
  * @arr: Array
+ * @size: size
  * Returm: Nothing
  */
-void _quicksort(int arr, int low, int high)
+void _quicksort(int *arr, int low, int high, size_t size)
 {
 	int pi;
 
@@ -67,7 +66,7 @@ void _quicksort(int arr, int low, int high)
 		pi = _partition(arr, low, high);
 		_quicksort(arr, low, pi - 1);
 		_quicksort(arr, pi + 1, high);
-		print_ar
+		print_array(arr, size);
 	}
 }
 
@@ -84,7 +83,5 @@ void quick_sort(int *array, size_t size)
 	{
 		return;
 	}
-	low = 0;
-	high = size - 1;
-	_quicksort(array, low, high);
+	_quicksort(array, 0, size - 1, size);
 }
