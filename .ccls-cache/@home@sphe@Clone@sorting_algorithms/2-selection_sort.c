@@ -19,14 +19,14 @@ void selection_sort(int *array, size_t size)
 			{
 				minidx = j;
 			}
-			if (minidx != i)
-			{
-				temp = array[minidx];
-				array[minidx] = array[i];
-				array[i] = temp;
-			}
 		}
-		print_array(array, size);
+		if (minidx != i)
+		{
+			temp = array[minidx];
+			array[minidx] = array[i];
+			array[i] = temp;
+			print_array(array, size);
+		}
 	}
 }
 

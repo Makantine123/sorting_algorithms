@@ -25,5 +25,11 @@ void print_list(const listint_t *list);
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
+void quick_sort(int *array, size_t size);
+
+/** Custom functions **/
+void _swap(int *arr, int fist, int second, int size);
+int _partition(int *arr, int low, int high, size_t size);
+void _quicksort(int *arr, int low, int high, size_t size);
 
 #endif
