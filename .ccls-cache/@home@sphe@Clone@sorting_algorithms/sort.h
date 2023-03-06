@@ -19,6 +19,17 @@ struct listint_s *prev;
 struct listint_s *next;
 } listint_t;
 
+/**
+ * enum bool - Enumeration of Boolean values
+ * @false: Equals 0
+ * @true: Equals 1
+ */
+typedef enum bool
+{
+	false = 0;
+	true
+} bool;
+
 /** Function Prototype **/
 void print_array(const  int *array, size_t size);
 void print_list(const listint_t *list);
@@ -33,7 +44,7 @@ void cocktail_sort_list(listint_t **list);
 void _swap(int *arr, int fist, int second, int size);
 int _partition(int *arr, int low, int high, size_t size);
 void _quicksort(int *arr, int low, int high, size_t size);
-void _myswap_cocktail(listint_t **node, listint_t **list);
-
+void myswap1_cocktail(listint_t **list, listint_t **tail, listint_t **actN);
+void myswap2_cocktail(listint_t **list, listint_t **tail, listint_t **actN);
 
 #endif

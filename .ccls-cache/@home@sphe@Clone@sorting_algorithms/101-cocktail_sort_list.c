@@ -1,90 +1,98 @@
 #include "sort.h"
+
+void swap_node_ahead(listint_t **list, listint_t **tail, listint_t **shaker);
+void swap_node_behind(listint_t **list, listint_t **tail, listint_t **shaker);
+void cocktail_sort_list(listint_t **list);
+
 /**
- * _myswap_cocktail - Swap nodes
- * @node: Node
- * @list: list head
- * Return: No return
+ * swap_node_ahead - Swap a node in a listint_t doubly-linked list
+ * list of integers with the node ahead of it.
+ * @list: A pointer to the head of a doubly-linked list of integers.
+ * @tail: A pointer to the tail of the doubly-linked list.
+ * @shaker: A pointer to the current swapping node of the cocktail shaker algo.
  */
-void _myswap_cocktail(listint_t **node, listint_t **list)
+void swap_node_ahead(listint_t **list, listint_t **tail, listint_t **shaker)
 {
-	listint_t *temp, *temp2, *temp3;
+	listint_t *tmp = (*shaker)->next;
 
-	if (!(*node)->prev)
-	{
-		*list = (*node)->next;
-	}
-
-	temp = temp3 = *node;
-	temp2 = temp->next;
-
-	temp->next = temp2->next;
-	temp3 = temp->next;
-	temp->prev = temp2;
-	temp2->next = temp;
-	temp2->prev = temp3;
-
-	if (temp2->prev)
-	{
-		temp2->prev->next = temp2;
-	}
-
-	if (temp->next)
-	{
-		temp->next->prev = temp;
-	}
-
-	*node = temp2;
+	if ((*shaker)->prev != NULL)
+		(*shaker)->prev->next = tmp;
+	else
+		*list = tmp;
+	tmp->prev = (*shaker)->prev;
+	(*shaker)->next = tmp->next;
+	if (tmp->next != NULL)
+		tmp->next->prev = *shaker;
+	else
+		*tail = *shaker;
+	(*shaker)->prev = tmp;
+	tmp->next = *shaker;
+	*shaker = tmp;
 }
 
+/**
+ * swap_node_behind - Swap a node in a listint_t doubly-linked
+ * list of integers with the node behind it.
+ * @list: A pointer to the head of a doubly-linked list of integers.
+ * @tail: A pointer to the tail of the doubly-linked list.
+ * @shaker: A pointer to the current swapping node of the cocktail shaker algo.
+ */
+void swap_node_behind(listint_t **list, listint_t **tail, listint_t **shaker)
+{
+	listint_t *tmp = (*shaker)->prev;
+
+	if ((*shaker)->next != NULL)
+		(*shaker)->next->prev = tmp;
+	else
+		*tail = tmp;
+	tmp->next = (*shaker)->next;
+	(*shaker)->prev = tmp->prev;
+	if (tmp->prev != NULL)
+		tmp->prev->next = *shaker;
+	else
+		*list = *shaker;
+	(*shaker)->next = tmp;
+	tmp->prev = *shaker;
+	*shaker = tmp;
+}
 
 /**
- * cocktail_sort_list - Sorts a double linked list of integers in asc. order
- * using Cocktail shaker sort
- * :@list: list pointer
- * Return: Nothing
- */
+ *  * cocktail_sort_list - Sort a listint_t doubly-linked list of integers in
+ *   *                      ascending order using the cocktail shaker algorithm.
+ *    * @list: A pointer to the head of a listint_t doubly-linked list.
+ *     */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *head, *aux;
-	int c, n, m;
+	listint_t *tail, *shaker;
+	bool shaken_not_stirred = false;
 
-	c = 0, n = -1, m = -1;
-
-	if (!(*list) || (!((*list)->prev) && !((*list)->next)))
-	{
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	}
-	head = *list;
-	while (m >= n)
+
+	for (tail = *list; tail->next != NULL;)
+		tail = tail->next;
+
+	while (shaken_not_stirred == false)
 	{
-		n++;
-		while (head->next && c != m)
+		shaken_not_stirred = true;
+		for (shaker = *list; shaker != tail; shaker = shaker->next)
 		{
-			if (head->n > head->next->n)
+			if (shaker->n > shaker->next->n)
 			{
-				aux = head;
-				_myswap_cocktail(&aux, list);
-				print_list(*list);
-				head = aux;
+				swap_node_ahead(list, &tail, &shaker);
+				print_list((const listint_t *)*list);
+				shaken_not_stirred = false;
 			}
-			c++;
-			head = head->next;
 		}
-		if (n == 0)
+		for (shaker = shaker->prev; shaker != *list;
+			shaker = shaker->prev)
 		{
-			m = c;
-			m--;
-		}
-		while (head->prev && c >= n)
-		{
-			if (head->n < head->prev->n)
+			if (shaker->n < shaker->prev->n)
 			{
-				aux = head->prev;
-				_myswap_cocktail(&aux, list);
-				print_list(*list);
-				head = aux->next;
+				swap_node_behind(list, &tail, &shaker);
+				print_list((const listint_t *)*list);
+				shaken_not_stirred = false;
 			}
-			c--, head = head->prev;
 		}
 	}
 }
