@@ -38,7 +38,7 @@ int _partition(int *arr, int low, int high, size_t size)
 
 	for (j = low; j <= high; j++)
 	{
-		if (arr[j] <= pvot)
+		if (arr[j] < pvot)
 		{
 			_swap(arr, i, j, size);
 			i++;
