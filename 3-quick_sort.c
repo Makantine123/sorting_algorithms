@@ -31,14 +31,14 @@ void _swap(int *arr, int first, int second, int size)
  */
 int _partition(int *arr, int low, int high, size_t size)
 {
-	int i, j, pivot;
+	int i, j, pvot;
 
 	i = low;
-	pivot = arr[high];
+	pvot = arr[high];
 
 	for (j = low; j <= high; j++)
 	{
-		if (arr[j] <= pivot)
+		if (arr[j] <= pvot)
 		{
 			_swap(arr, i, j, size);
 			i++;
@@ -58,14 +58,14 @@ int _partition(int *arr, int low, int high, size_t size)
  */
 void _quicksort(int *arr, int low, int high, size_t size)
 {
-	int pi;
+	int p;
 
 	if (low < high)
 	{
-		/**Set partion index-pi**/
-		pi = _partition(arr, low, high, size);
-		_quicksort(arr, low, pi - 1, size);
-		_quicksort(arr, pi + 1, high, size);
+		/**Set partion index-p**/
+		p = _partition(arr, low, high, size);
+		_quicksort(arr, low, p - 1, size);
+		_quicksort(arr, p + 1, high, size);
 	}
 }
 

@@ -66,7 +66,6 @@ void _quicksort(int *arr, int low, int high, size_t size)
 		pi = _partition(arr, low, high, size);
 		_quicksort(arr, low, pi - 1, size);
 		_quicksort(arr, pi + 1, high, size);
-		print_array(arr, size);
 	}
 }
 
