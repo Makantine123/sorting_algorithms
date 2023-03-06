@@ -16,7 +16,6 @@ void _myswap_cocktail(listint_t **node, listint_t **list)
 
 	temp = temp3 = *node;
 	temp2 = temp->next;
-
 	temp->next = temp2->next;
 	temp3 = temp->next;
 	temp->prev = temp2;
@@ -27,7 +26,6 @@ void _myswap_cocktail(listint_t **node, listint_t **list)
 	{
 		temp2->prev->next = temp2;
 	}
-
 	if (temp->next)
 	{
 		temp->next->prev = temp;
@@ -67,8 +65,7 @@ void cocktail_sort_list(listint_t **list)
 				print_list(*list);
 				head = aux;
 			}
-			c++;
-			head = head->next;
+			c++, head = head->next;
 		}
 		if (n == 0)
 		{

@@ -54,7 +54,6 @@ void cocktail_sort_list(listint_t **list)
 	{
 		return;
 	}
-
 	head = *list;
 	while (m >= n)
 	{
@@ -85,8 +84,7 @@ void cocktail_sort_list(listint_t **list)
 				print_list(*list);
 				head = aux->next;
 			}
-			c--;
-			head = head->prev;
+			c--, head = head->prev;
 		}
 	}
 }
