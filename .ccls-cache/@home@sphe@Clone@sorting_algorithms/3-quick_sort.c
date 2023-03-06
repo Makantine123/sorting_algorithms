@@ -50,7 +50,7 @@ int _partition(int *arr, int low, int high, size_t size)
 
 /**
  * _quicksort - Quick sort algorithm
- * @low: low 
+ * @low: low
  * @high: high
  * @arr: Array
  * @size: size
@@ -78,7 +78,6 @@ void _quicksort(int *arr, int low, int high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	int low, high;
 	if (size < 2)
 	{
 		return;
